@@ -1,9 +1,5 @@
 import numpy as np
 
-data=np.genfromtxt("data1.txt",delimiter=',')
-# second arg to hsplit is number of pieces or array of indices
-X,Y=np.hsplit(data,[-1])
-X=np.hstack((np.ones((len(X),1)),X))
 
 def cost(X,Y,theta,rlambda):
 	m = len(Y)
@@ -18,7 +14,22 @@ def cost(X,Y,theta,rlambda):
 
 	return (J,grad)
 
-theta = np.zeros((2,1))
-rlambda = 0;
-print(cost(X,Y,theta,rlambda))
+
+def gradientDescent(X, Y, rlambda,alpha,num_iter):
+	theta=np.zeros((X.shape[1],1))
+	for i in range(num_iter):
+		(J,grad)=cost(X,Y,theta,rlambda)
+		# here we can use J to plot wrt i to check convergence and select alpha 
+		theta = theta-alpha*grad;
+	return theta
+
+
+if __name__ == "__main__":
+	data=np.genfromtxt("data1.txt",delimiter=',')
+	# second arg to hsplit is number of pieces or array of indices
+	X,Y=np.hsplit(data,[-1])
+	X=np.hstack((np.ones((len(X),1)),X))
+	theta = np.zeros((2,1))
+	rlambda = 0;
+	print(gradientDescent(X,Y,rlambda,0.01,1500))
 

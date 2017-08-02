@@ -2,6 +2,8 @@ import numpy as np
 
 
 def cost(X, Y, theta, rlambda):
+    """ Computes linear regression cost and gradient of using theta 
+    to fit data X and Y with regularization parameter rlambda """
     m = len(Y)
     grad = np.zeros(theta.shape)
     err = np.dot(X, theta) - Y
@@ -16,6 +18,9 @@ def cost(X, Y, theta, rlambda):
 
 
 def gradientDescent(X, Y, rlambda, alpha, num_iter):
+    """ Performs gradient descent with num_iter iterations, 
+    learning rate alpha and regularization term rlambda 
+    returns the learned theta """
     theta = np.zeros((X.shape[1], 1))
     for i in range(num_iter):
         (J, grad) = cost(X, Y, theta, rlambda)

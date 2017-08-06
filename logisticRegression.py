@@ -7,7 +7,7 @@ def sigmoid(z):
 
 
 def cost(X, Y, theta, rlambda):
-	""" Computes logistic regression cost and gradient of using theta 
+    """ Computes logistic regression cost and gradient of using theta
     to fit data X and Y with regularization parameter rlambda """
     m = len(Y)
     Hx = sigmoid(np.dot(X, theta))

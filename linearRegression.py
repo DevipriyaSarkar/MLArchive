@@ -3,7 +3,7 @@ from scipy.optimize import minimize
 from featureNormalize import normalize
 
 def cost(X, Y, theta, rlambda):
-    """ Computes linear regression cost and gradient of using theta 
+    """ Computes linear regression cost and gradient of cost using theta 
     to fit data X and Y with regularization parameter rlambda """
     m = len(Y)
     grad = np.zeros(theta.shape)
